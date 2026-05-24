@@ -1,25 +1,27 @@
-name: Product Catalog 🚀
+name: Deploy Code to Release Branch 🚀
 
 on:
-  push:
-    branches: [master]
   workflow_dispatch:
+  push:
+    branches:
+      - master
 
 permissions:
   contents: write
 
 jobs:
   build:
-    name: Push to Release Branch
+    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build 🚀
+      - name: Build project
         run: npm run build
 
       - name: Deploy 🚀
@@ -28,3 +30,4 @@ jobs:
         with:
           branch: gh-pages
           folder: dist
+          clean: true
