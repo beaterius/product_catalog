@@ -1,70 +1,255 @@
-# Getting Started with Create React App
+# Product Catalog App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern React + TypeScript product catalog application with filtering, favorites, comparison system, pagination, and localStorage persistence.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+# Installation & Run
 
-### `npm start`
+## 1. Clone repository
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+git clone https://github.com/beaterius/product_catalog
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 2. Open project folder
 
-### `npm test`
+```bash
+cd product_catalog
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 3. Install dependencies
 
-### `npm run build`
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 4. Start development server
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm run dev
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+or
 
-### `npm run eject`
+```bash
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+(depending on the package manager / setup)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 5. Build production version
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm run build
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+# Implemented Features
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Product Catalog
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Product list fetched from external API
+- Responsive product grid
+- Product cards with:
+    - image
+    - title
+    - brand
+    - price
+    - rating
+    - stock status
+    - discount information
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Search & Filters
 
-### Analyzing the Bundle Size
+Implemented:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Search by:
+    - product title
+    - brand
+    - category
 
-### Making a Progressive Web App
+- Category filtering
+- In-stock filter
+- Discount-only filter
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## Sorting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Implemented sorting by:
 
-### Deployment
+- Price ascending
+- Price descending
+- Rating descending
+- Title alphabetically
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## Favorites System
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Add/remove products from favorites
+- Favorites stored in `localStorage`
+- Separate Favorites page
+- Independent pagination for favorites
+
+---
+
+## Product Comparison
+
+- Compare up to 3 products
+- Side-by-side comparison table
+- Validation preventing more than 3 compared items
+- Error notification system
+
+---
+
+## Pagination
+
+Implemented:
+
+- Main catalog pagination
+- Favorites pagination
+- Adjustable items per page
+
+---
+
+## UI / UX
+
+Implemented:
+
+- Tab navigation
+- Animated message box
+- Page transitions
+- Clean component structure
+- Reusable pagination components
+
+---
+
+## Refactoring
+
+Application was refactored into smaller reusable components:
+
+- Layout components
+- Page components
+- Pagination components
+
+This improved:
+
+- readability
+- maintainability
+- scalability
+
+---
+
+# What Was Not Implemented
+
+The following features were not implemented due to time limitations:
+
+- Backend integration
+- Authentication / user accounts
+- Server-side favorites synchronization
+- Unit tests
+- E2E tests
+- Advanced state management (Redux / Zustand)
+- Product details page
+
+---
+
+# Known Issues
+
+- Pagination resets after changing filters
+    - This behavior is intentional but may feel unexpected.
+
+- LocalStorage data may persist outdated IDs if API data changes.
+
+- Compare table layout may become crowded on very small screens.
+
+---
+
+# Future Improvements
+
+Given more time, I would improve the project by adding:
+
+## Architecture
+
+- Custom hooks:
+    - `useProducts`
+    - `usePagination`
+    - `useLocalStorage`
+    - Context API or Zustand for global state management
+
+---
+
+## Performance
+
+- React.memo optimizations
+- Lazy loading
+- Virtualized product lists
+
+---
+
+## Features
+
+- Product details page
+- Product reviews
+- Wishlist synchronization
+
+---
+
+# Technologies Used
+
+- React
+- TypeScript
+- CSS
+- Fetch API
+- LocalStorage
+
+---
+
+# Project Structure
+
+```
+📁 src
+│  📁 components
+│  │  📁 layout
+│  │  │  ⚛️ Header.tsx
+│  │  │  ⚛️ MessageBox.tsx
+│  │  │  ⚛️ NavigationTabs.tsx
+│  │  📁 pages
+│  │  │  ⚛️ ComparePage.tsx
+│  │  │  ⚛️ FavoritesPage.tsx
+│  │  │  ⚛️ MainPage.tsx
+│  │  📁 pagination
+│  │  │  ⚛️ ItemsPerPageSelect.tsx
+│  │  │  ⚛️ Pagination.tsx
+│  │  ⚛️ CompareTable.tsx
+│  │  ⚛️ FavoritesSection.tsx
+│  │  ⚛️ Filters.tsx
+│  │  ⚛️ ProductCard.tsx
+│  │  ⚛️ ProductGrid.tsx
+│  │  ⚛️ SearchBar.tsx
+│  📁 constants
+│  │  📘 api.ts
+│  📁 hooks
+│  │  📘 useProducts.ts
+│  │  📘 useUserLists.ts
+│  📁 services
+│  │  📘 fetchProducts.ts
+│  📁 styles
+│  │  🎨 global.css
+│  📁 types
+│  │  📘 product.ts
+│  🎨 App.css
+│  ⚛️ App.tsx
+│  🎨 index.css
+│  ⚛️ main.tsx
+📘 vite.config.ts
+```
+
+---
+
+# Author beaterius
