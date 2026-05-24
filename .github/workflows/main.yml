@@ -1,0 +1,21 @@
+name: Product Catalog 🚀
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Push to Release Branch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - name: Install dependencies
+        run: npm ci
+      # Workflow dispatch event that pushes the current version to the release branch.
+      # From here the secondary production deployment workflow will trigger to build the dependencies.
+      - name: Build 🚀
+        run: npm run build
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: .
