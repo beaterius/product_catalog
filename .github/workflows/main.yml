@@ -1,7 +1,6 @@
-name: Deploy Code to Release Branch 🚀
+name: Deploy 🚀
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - master
@@ -11,23 +10,19 @@ permissions:
 
 jobs:
   build:
-    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: Install
         run: npm install
 
-      - name: Build project
+      - name: Build
         run: npm run build
 
-      - name: Deploy 🚀
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
-
         with:
           branch: gh-pages
           folder: dist
-          clean: true
